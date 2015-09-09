@@ -1,0 +1,58 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/bootstrap-calendar/css/bootstrap_calendar.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/gritter/css/jquery.gritter.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/morris/morris.css')}}" />
+<style type="text/css">
+.navbar-brand {
+	color: #00acac;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+{% import '::macros.html.twig' as form_macro %}
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	<!-- begin #header -->
+	{% include 'AppBundle::header.html.twig' %}
+	<!-- end #header -->
+
+	<!-- begin #sidebar -->
+	{% include 'AppBundle::sidebar.html.twig' %}
+	<!-- end #sidebar -->
+
+	<!-- begin #content -->
+	<div id="content" class="content">
+		{% block content %}{% endblock %}
+	</div>
+	<!-- end #content -->
+
+	<!-- begin scroll to top btn -->
+	<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+	<!-- end scroll to top btn -->
+</div>
+{% endblock %}
+
+{% block javascripts %}
+	{% javascripts 
+    '@AppBundle/Resources/public/plugins/morris/raphael.min.js'
+    '@AppBundle/Resources/public/plugins/morris/morris.js'
+    '@AppBundle/Resources/public/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js'
+    '@AppBundle/Resources/public/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js'
+    '@AppBundle/Resources/public/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js'
+	'@AppBundle/Resources/public/plugins/gritter/js/jquery.gritter.js'
+	'@AppBundle/Resources/public/js/apps.min.js'
+	%}<script src="{{ asset_url }}"></script>{% endjavascripts %}
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+		});
+	</script>
+{% endblock %}

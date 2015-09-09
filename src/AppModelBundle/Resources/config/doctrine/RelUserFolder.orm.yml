@@ -1,0 +1,27 @@
+AppModelBundle\Entity\RelUserFolder:
+    type: entity
+    table: rel_user_folder
+    id:
+        id:
+            type: integer
+            nullable: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        isOwner:
+            type: boolean
+            nullable: false
+            column: is_owner
+    manyToOne:
+        user:
+            targetEntity: User
+            joinColumn:
+                name: id_fos_user
+                referencedColumnName: id
+        folder:
+            targetEntity: Folder
+            joinColumn:
+                name: id_folder
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

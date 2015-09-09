@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -40,7 +40,17 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ AppBundle, FOSUserBundle ]
+    assets:
+        font-awesome-otf:
+            inputs: '%kernel.root_dir%/Resources/public/fonts/FontAwesome.otf'
+            outputs: 'fonts/FontAwesome.otf'
+        font-awesome-eot:
+            inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.eot'
+            outputs: 'fonts/fontawesome-webfont.eot'
+        font-awesome-svg:
+            inputs: '%kernel.root_dir%/Resources/public/fonts/fontawesome-webfont.svg'
+            outputs: 'fonts/fontawesome-webfont.svg'
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -78,3 +88,29 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# FOSUserBundle Configuration
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppModelBundle\Entity\User
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        avatar_header:
+            quality: 75
+            filters:
+                thumbnail: { size: [30, 30], mode: outbound }
+        avatar_sidebar:
+            quality: 75
+            filters:
+                thumbnail: { size: [34, 34], mode: outbound }
+        avatar_profile:
+            quality: 75
+            filters:
+                thumbnail: { size: [128, 128], mode: outbound }

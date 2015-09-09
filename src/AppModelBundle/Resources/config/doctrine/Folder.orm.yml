@@ -1,0 +1,27 @@
+AppModelBundle\Entity\Folder:
+    type: entity
+    table: folder
+    id:
+        id:
+            type: integer
+            nullable: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+        isPublic:
+            type: boolean
+            nullable: false
+            column: is_public
+        slugName:
+            type: string
+            nullable: false
+            length: 45
+            column: slug_name
+            fixed: false
+    lifecycleCallbacks: {  }

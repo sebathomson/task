@@ -1,0 +1,119 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/bootstrap-calendar/css/bootstrap_calendar.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/gritter/css/jquery.gritter.css')}}" />
+<link rel="stylesheet" href="{{ asset('bundles/app/plugins/morris/morris.css')}}" />
+<style type="text/css">
+    .navbar-brand {
+        color: #00acac;
+    }
+    .theme-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    .theme-list + .theme-list {
+        margin-top: 10px;
+    }
+    .theme-list > li {
+        float: left;
+    }
+    .theme-list > li + li {
+        margin-left: 5px;
+    }
+    .theme-list > li > a {
+        text-decoration: none;
+    }
+    .theme-list > li.active > a  {
+        position: relative;
+    }
+    .theme-list > li.active > a:before {
+        content: '\f00c';
+        font-family: FontAwesome;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 14px;
+        color: #fff;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        text-align: center;
+    }
+    .theme-list > li.active > a.bg-white:before {
+        color: #666;
+    }
+    .theme-list > li > a {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        display: block;
+        -webkit-transition: all .2s linear;
+        -moz-transition: all .2s linear;
+        transition: all .2s linear;
+    }
+    .theme-list > li > a:hover,
+    .theme-list > li > a:focus {
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+    }
+    .theme-list a.bg-white {
+        border: 1px solid #e2e7eb;
+    }
+    dt {
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+{% import '::macros.html.twig' as form_macro %}
+<!-- begin #page-loader -->
+<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+<!-- end #page-loader -->
+<!-- begin #page-container -->
+<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #header -->
+    {% include 'AppBundle::header.html.twig' %}
+    <!-- end #header -->
+
+    <!-- begin #sidebar -->
+    {% include 'AppBundle::sidebar.html.twig' %}
+    <!-- end #sidebar -->
+
+    <!-- begin #content -->
+    <div id="content" class="content">
+        {% block content %}
+        {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+        {% endblock %}
+    </div>
+    <!-- end #content -->
+
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts 
+    '@AppBundle/Resources/public/plugins/morris/raphael.min.js'
+    '@AppBundle/Resources/public/plugins/morris/morris.js'
+    '@AppBundle/Resources/public/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js'
+    '@AppBundle/Resources/public/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js'
+    '@AppBundle/Resources/public/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js'
+    '@AppBundle/Resources/public/plugins/gritter/js/jquery.gritter.js'
+    '@AppBundle/Resources/public/js/apps.min.js'
+    %}<script src="{{ asset_url }}"></script>{% endjavascripts %}
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    {% endblock %}

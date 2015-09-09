@@ -1,0 +1,52 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+	<!-- begin login -->
+	<div class="login login-v2" data-pageload-addclass="animated flipInX">
+		<!-- begin brand -->
+		<div class="login-header">
+			<div class="brand">
+				<i class="fa fa-tasks"></i> Task
+				<small>Manage your task</small>
+			</div>
+			<div class="icon text-success">
+				<i class="fa fa-check"></i>
+			</div>
+		</div>
+		<!-- end brand -->
+		<div class="login-content">
+			<p class="text-center lead text-success"><strong>¡Felicidades!</strong></p>
+			<p>
+				Has sido registrado correctamente como <strong>{{ user.username }}</strong> , haz clic en el siguiente enlace
+				para acceder a la aplicación.
+			</p>
+			<br>
+			<br>
+			<p class="text-center">
+				<a href="#" class="btn btn-success btn-block">
+					<i class="fa fa-sign-in pull-right"></i>
+					Ingresar
+				</a>
+			</p>
+		</div>
+	</div>
+	<!-- end login -->
+{% endblock content %}
+
+{% block javascripts %}
+	{% javascripts 
+	'@AppBundle/Resources/public/js/login-v2.demo.min.js'
+	'@AppBundle/Resources/public/js/apps.min.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			LoginV2.init();
+		});
+	</script>
+{% endblock javascripts %}

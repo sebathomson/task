@@ -1,0 +1,96 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+    <li><a href="javascript:;">Home</a></li>
+    <li class="active">Profile</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header"><i class="fa fa-user"></i> Profile</h1>
+<!-- end page-header -->
+<!-- begin profile-container -->
+<div class="row">
+    <!-- begin col-12 -->
+    <div class="col-md-12">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <i class="fa fa-list"></i>
+                </h4>
+            </div>
+            <div class="alert alert-success fade in hide">
+                <span class="close" data-dismiss="alert">×</span>
+                <i class="fa fa-check fa-2x pull-left"></i>
+                <p></p>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <a href="javascript:;">
+                            <img src="{{ asset('/uploads/users_avatars/' ~ app.user.avatar | default('avatar_default.png') ) | imagine_filter('avatar_profile') }}" alt="avatar" class="media-object center-block" />
+                        </a>
+                        <hr>
+                        <button type="button" class="btn btn-info btn-block">Change Image</button>
+                    </div>
+                    <!-- end col-2 -->
+                    <div class="col-md-10 form-horizontal">
+                        <legend>Account</legend>
+                        <dl class="dl-horizontal">
+                            <dt>Username</dt>
+                            <dd>{{ app.user.username }}</dd>
+                            <dt>Email</dt>
+                            <dd>{{ app.user.email }}</dd>
+                            <dt>Password</dt>
+                            <dd>******</dd>
+                            <dt><hr></dt>
+                            <dd><hr></dd>
+                            <dt>First Name</dt>
+                            <dd>{{ app.user.name }}</dd>
+                            <dt>Last Name</dt>
+                            <dd>{{ app.user.lastName }}</dd>
+                            <dt>Date Birthday</dt>
+                            <dd>{{ app.user.lastLogin | date() }}</dd>
+                        </dl>
+                        <legend>Settings</legend>
+                        <dl class="dl-horizontal">
+                            <dt>Language</dt>
+                            <dd>#SELECT#</dd>
+                            <dt>Color Theme</dt>
+                            <dd>
+                                <ul class="theme-list clearfix">
+                                    <li class="active">
+                                        <a href="javascript:;" class="bg-green" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default" data-original-title="" title="">&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red" data-original-title="" title="">&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue" data-original-title="" title="">&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple" data-original-title="" title="">&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange" data-original-title="" title="">&nbsp;</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black" data-original-title="" title="" aria-describedby="tooltip768832">&nbsp;</a>
+                                    </li>
+                                </ul>                          
+                            </dd>
+                            <dt>Date Format</dt>
+                            <dd>******</dd>
+                        </dl>
+                        <legend>Auditory</legend>
+                        <dl class="dl-horizontal">
+                            <dt>Last Login</dt>
+                            <dd>{{ app.user.lastLogin | date() }}</dd>
+                        </dl>
+                    </div>
+                    <!-- end col-10 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col-12 -->
+</div>
+<!-- end profile-container -->

@@ -1,0 +1,67 @@
+<div id="sidebar" class="sidebar">
+	<!-- begin sidebar scrollbar -->
+	<div data-scrollbar="true" data-height="100%">
+		<!-- begin sidebar user -->
+		<ul class="nav">
+			<li class="nav-profile">
+				<div class="image">
+					<a href="javascript:;"><img src="{{ asset('/uploads/users_avatars/' ~ app.user.avatar | default('avatar_default.png') ) | imagine_filter('avatar_sidebar') }}" alt="avatar" /></a>
+				</div>
+				<div class="info">
+					{{ app.user.name }}
+				</div>
+			</li>
+		</ul>
+		<!-- end sidebar user -->
+		<!-- begin sidebar nav -->
+		<ul class="nav">
+			<li class="nav-header">
+				Folders
+			</li>
+			<li class="has-sub active">
+				<a href="javascript:;">
+					<b class="caret pull-right"></b>
+					<i class="fa fa-folder-open-o"></i>
+					<span>
+						My Privates Folder
+					</span>
+				</a>
+				<ul class="sub-menu">
+					<li>
+						<a href="index.html">Pendientes</a>
+					</li>
+					<li class="active">
+						<a href="index_v2.html">Terminados</a>
+					</li>
+				</ul>
+			</li>
+			<li class="has-sub">
+				<a href="javascript:;">
+					<b class="caret pull-right"></b>
+					<i class="fa fa-folder-open-o"></i>
+					<span>
+						My Public Folder
+					</span>
+				</a>
+				<ul class="sub-menu">
+					<li>
+						<a href="index.html">Pendientes</a>
+					</li>
+					<li class="">
+						<a href="index_v2.html">Terminados</a>
+					</li>
+				</ul>
+			</li>
+			<!-- begin sidebar minify button -->
+			<li>
+				<a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify">
+					<i class="fa fa-angle-double-left"></i>
+				</a>
+			</li>
+			<!-- end sidebar minify button -->
+		</ul>
+		<!-- end sidebar nav -->
+	</div>
+	<!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>

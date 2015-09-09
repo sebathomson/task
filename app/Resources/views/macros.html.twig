@@ -1,0 +1,28 @@
+{% macro style_input(input) %}
+    {# {% set input_type = input | fenec_get_input_type() %} #}
+    <div class="form-group m-b-20 {% if input.vars.errors is not empty %}has-error dark{% endif %}">
+        {{ form_widget(input, { 'attr': {'class': 'form-control input-lg'} }) }}
+        {% for error in input.vars.errors %}
+            <p class="help-block">
+                <span class="text-error">{{ error.message }}</span>
+            </p>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro style_form(form) %}
+    {% import _self as style %}
+    {% for input in form %}
+        {% if input.getIterator() | length() == 0 %}
+            {{ style.style_input(input) }}
+        {% else %}
+            {% for inputIterator in input %}
+                {{ style.style_input(inputIterator) }}
+            {% endfor %}
+        {% endif %}
+        {# If is the last input add the form_rest #}
+        {% if loop.last %}
+        <div class="hide">{{ form_rest(form) }}</div>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

@@ -1,0 +1,40 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <!-- begin login -->
+    <div class="login login-v2" data-pageload-addclass="animated flipInX">
+        <!-- begin brand -->
+        <div class="login-header">
+            <div class="brand">
+                <i class="fa fa-tasks"></i> Task
+                <small>Manage your task</small>
+            </div>
+            <div class="icon">
+                <i class="fa fa-sign-in"></i>
+            </div>
+        </div>
+        <!-- end brand -->
+        <div class="login-content">
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    </div>
+    <!-- end login -->
+{% endblock content %}
+
+{% block javascripts %}
+	{% javascripts 
+	'@AppBundle/Resources/public/js/login-v2.demo.min.js'
+	'@AppBundle/Resources/public/js/apps.min.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			LoginV2.init();
+		});
+	</script>
+{% endblock javascripts %}

@@ -1,0 +1,67 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style type="text/css">
+	
+</style>
+<!-- begin login -->
+<div class="login login-v2" data-pageload-addclass="animated flipInX">
+	<!-- begin brand -->
+	<div class="login-header">
+		<div class="brand">
+			<i class="fa fa-tasks"></i> Task
+			<small>Manage your task</small>
+		</div>
+		<div class="icon">
+			<i class="fa fa-sign-in"></i>
+		</div>
+	</div>
+	<!-- end brand -->
+	<div class="login-content">
+		<form action="{{ path("fos_user_security_check") }}" method="post"  class="margin-bottom-0">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+			<div class="form-group m-b-20">
+				<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control input-lg" placeholder="{{ 'security.login.username'|trans }}" />
+			</div>
+
+			<div class="form-group m-b-20">
+				<input type="password" id="password" name="_password" required="required" class="form-control input-lg" placeholder="{{ 'security.login.password'|trans }}" />
+			</div>
+
+			<div class="checkbox m-b-20">
+				<label>
+					<input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}
+				</label>
+			</div>
+			<div class="login-buttons">
+				<button type="submit" id="_submit" name="_submit" class="btn btn-success btn-block btn-lg">{{ 'security.login.submit'|trans }}</button>
+			</div>
+		</form>
+		{% if error %}
+		<script type="text/javascript"> alert('{{ error.messageKey|trans(error.messageData, 'security') }}');</script>
+		{% endif %}
+	</div>
+</div>
+<!-- end login -->
+{% endblock content %}
+
+{% block javascripts %}
+{% javascripts 
+	'@AppBundle/Resources/public/js/login-v2.demo.min.js'
+	'@AppBundle/Resources/public/js/apps.min.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			LoginV2.init();
+		});
+	</script>
+	{% endblock javascripts %}
